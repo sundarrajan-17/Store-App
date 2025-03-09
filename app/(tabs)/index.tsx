@@ -10,9 +10,11 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
   const [mode, setMode] = useState("dark");
+  const router = useRouter();
 
   const setDarkLightMode = () => {
     if (mode === "dark") {
@@ -87,7 +89,7 @@ export default function HomeScreen() {
           </Text>
         </View>
         <View style={styles.buttoncontainer}>
-          <TouchableHighlight onPress={handleBookStock}>
+          <TouchableHighlight onPress={() => router.push("/(tabs)/explore")}>
             <View
               style={
                 mode === "dark" ? styles.lightButtonView : styles.darkButtonView
@@ -102,7 +104,7 @@ export default function HomeScreen() {
               </Text>
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={needToReturnStock}>
+          <TouchableHighlight onPress={() => router.push("/(tabs)/appearance")}>
             <View
               style={
                 mode === "dark" ? styles.lightButtonView : styles.darkButtonView
@@ -117,7 +119,7 @@ export default function HomeScreen() {
               </Text>
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={stockHistory}>
+          <TouchableHighlight onPress={() => router.push("/(tabs)/appearance")}>
             <View
               style={
                 mode === "dark" ? styles.lightButtonView : styles.darkButtonView
@@ -132,16 +134,6 @@ export default function HomeScreen() {
               </Text>
             </View>
           </TouchableHighlight>
-          {/* <View>
-            <TouchableHighlight onPress={needToReturnStock}>
-              Need To Return Stock
-            </TouchableHighlight>
-          </View>
-          <View>
-            <TouchableHighlight onPress={stockHistory}>
-              Stock History
-            </TouchableHighlight>
-          </View> */}
         </View>
       </View>
     </ScrollView>
